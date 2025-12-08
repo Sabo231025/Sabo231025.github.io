@@ -1,15 +1,20 @@
-// 简化版图片自动轮播功能 - 使用樱花API
+// 图片自动轮播功能 - 使用多个二次元图片API
 (function() {
+  // 从配置文件获取的图片API列表
+  // 注意：这些API地址会在HTML生成时被Hexo替换为实际配置的值
+  const imageApis = [
+    'https://www.dmoe.cc/random.php',
+    'https://api.btstu.cn/sjbz/api.php?lx=dongman&format=images',
+    'https://t.alcy.cc/fj',
+    'https://api.paugram.com/wallpaper/',
+    'https://api.cmvip.cn/API/se18url.php'
+  ];
+  
   // 配置
   const config = {
     interval: 5000,          // 切换间隔（毫秒）
     transitionTime: 1000,     // 过渡时间（毫秒）
-    // 使用多个图片API，随机选择
-    apiUrls: [
-      'https://www.dmoe.cc/random.php',  // 樱花API
-      'https://api.btstu.cn/sjbz/api.php?lx=dongman&format=images'  // 新增的动漫图片API
-    ],
-    maxRetries: 3             // 最大重试次数
+    maxRetries: 2             // 单个API最大重试次数
   };
   
   // 获取header元素
@@ -27,36 +32,7 @@
   
   let isLoading = false;
   let currentImage = '';
-  
-  // 获取随机图片API的图片
-  async function getRandomImage() {
-    let retries = 0;
-    
-    while (retries < config.maxRetries) {
-      retries++;
-      try {
-        // 从API列表中随机选择一个
-        const randomIndex = Math.floor(Math.random() * config.apiUrls.length);
-        const selectedApi = config.apiUrls[randomIndex];
-        
-        // 注意：直接使用图片URL，不通过fetch请求JSON，避免CORS问题
-        // 直接访问URL会返回图片，不需要JSON解析
-        const imageUrl = `${selectedApi}?t=${Date.now()}`; // 添加时间戳避免缓存
-        
-        console.log(`使用API: ${selectedApi}`);
-        
-        // 预加载图片
-        await preloadImage(imageUrl);
-        return imageUrl;
-      } catch (error) {
-        console.error(`第${retries}次获取图片失败:`, error);
-        // 重试前等待一段时间
-        await new Promise(resolve => setTimeout(resolve, 1000));
-      }
-    }
-    
-    throw new Error(`超过最大重试次数(${config.maxRetries})`);
-  }
+  let currentApiIndex = 0;
   
   // 预加载图片
   function preloadImage(url) {
@@ -69,6 +45,36 @@
       // 5秒超时
       setTimeout(() => reject(new Error(`图片加载超时: ${url}`)), 5000);
     });
+  }
+  
+  // 获取随机API
+  function getRandomApi() {
+    return imageApis[Math.floor(Math.random() * imageApis.length)];
+  }
+  
+  // 获取随机图片
+  async function getRandomImage() {
+    let retries = 0;
+    
+    while (retries < config.maxRetries) {
+      retries++;
+      try {
+        // 随机选择一个API
+        const apiUrl = getRandomApi();
+        // 添加时间戳避免缓存
+        const imageUrl = `${apiUrl}?t=${Date.now()}`;
+        
+        // 预加载图片
+        await preloadImage(imageUrl);
+        return imageUrl;
+      } catch (error) {
+        console.error(`第${retries}次获取图片失败:`, error);
+        // 重试前等待一段时间
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+    }
+    
+    throw new Error(`超过最大重试次数(${config.maxRetries})`);
   }
   
   // 切换图片
@@ -96,11 +102,12 @@
   // 初始化
   function init() {
     console.log('初始化图片轮播...');
+    console.log('使用的图片API列表:', imageApis);
+    
     changeImage(); // 立即显示第一张图片
     
     // 设置自动轮播
     setInterval(() => {
-      console.log('自动切换图片...');
       changeImage();
     }, config.interval);
     
