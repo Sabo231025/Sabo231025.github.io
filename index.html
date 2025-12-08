@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Sabo的博客 - 记录生活，分享知识</title><meta name="author" content="Sabo"><meta name="copyright" content="Sabo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="人生只似风前絮，欢也零星，悲也零星，都作连江点点萍。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sabo的博客">
+<meta property="og:url" content="https://sabo231025.github.io/index.html">
+<meta property="og:site_name" content="Sabo的博客">
+<meta property="og:description" content="人生只似风前絮，欢也零星，悲也零星，都作连江点点萍。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sabo231025.github.io/img/butterfly-icon.png">
+<meta property="article:author" content="Sabo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sabo231025.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Sabo的博客",
+  "alternateName": [
+    "记录生活，分享知识",
+    "sabo231025.github.io"
+  ],
+  "url": "https://sabo231025.github.io/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://sabo231025.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Sabo的博客',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div id="web_bg" style="background: linear-gradient(135deg,"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://api.cmvip.cn/API/se18url.php)"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Sabo的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Sabo的博客</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><script>// banner图片列表
+window.bannerImages = [
+  'https://img.xjh.me/random_img.php?type=bg&ctype=acg',
+  'https://source.unsplash.com/random/1920x1080/?anime,animation',
+  'https://cdn.seovx.com/t/?mom=302',
+  'https://picsum.photos/1920/1080?random=1&grayscale=false&blur=0&format=jpg&fit=cover&q=80&w=1920&h=1080&auto=compress&cs=tinysrgb&dpr=1',
+  'https://api.mz-moe.cn/img/?type=json',
+  'https://img.200206.xyz/api/setu?type=json'
+];
+
+// banner配置
+window.bannerConfig = {
+  interval: 5000,
+  animation: 'fade',
+  cacheSize: 10
+};</script><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/12/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Hexo博客搭建指南">Hexo博客搭建指南</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-12-08T07:00:00.000Z" title="发表于 2025-12-08 15:00:00">2025-12-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="content">Hexo博客搭建指南什么是Hexo？Hexo是一个快速、简洁且高效的静态博客框架。Hexo使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 为什么选择Hexo？ 🚀 速度快：基于Node.js，生成静态文件的速度极快 🎨 主题丰富：拥有大量精美的主题可供选择 ✍️ Markdown支持：使用熟悉的Markdown语法写作 📦 插件生态：丰富的插件扩展功能 🚢 部署简单：一键部署到GitHub Pages、Netlify等平台  环境准备在开始搭建Hexo博客之前，你需要准备以下环境：  Node.js (建议版本14.0以上) Git  安装Node.js访问Node.js官网下载并安装适合你系统的Node.js版本。 安装Git访问Git官网下载并安装Git。 安装Hexo1. 安装Hexo CLI打开终端，执行以下命令安装Hexo CLI： 1npm install -g hexo-cli  2. 初始化博客选择一个目录作为你的博客根目录，执行以下命令初始化Hexo博客： 123hexo init my-blogcd my-b...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/12/06/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-12-06T01:53:02.895Z" title="发表于 2025-12-06 09:53:02">2025-12-06</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sabo</div><div class="author-info-description">人生只似风前絮，欢也零星，悲也零星，都作连江点点萍。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Hexo博客搭建指南">Hexo博客搭建指南</a><time datetime="2025-12-08T07:00:00.000Z" title="发表于 2025-12-08 15:00:00">2025-12-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/06/hello-world/" title="Hello World">Hello World</a><time datetime="2025-12-06T01:53:02.895Z" title="发表于 2025-12-06 09:53:02">2025-12-06</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/"><span class="card-category-list-name">技术</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" style="font-size: 1.1em; color: #999">搭建指南</a> <a href="/tags/Hexo/" style="font-size: 1.1em; color: #999">Hexo</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.1em; color: #999">博客</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-12-08T06:12:20.559Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Sabo</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.2"></script><script src="/js/main.js?v=5.5.2"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, {"loop":true,"typeSpeed":50,"backSpeed":20,"backDelay":2000}))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["与其仰望星空，不如去做摘星星的人。","努力是奇迹的另一个名字。","梦想不会逃跑，会逃跑的永远是自己。","青春是一本太仓促的书，我们含着泪，一读再读。","星光不问赶路人，时光不负有心人。","即使没有翅膀，也要学会飞翔。","心有多大，舞台就有多大。","每一个不曾起舞的日子，都是对生命的辜负。","未来可期，人间值得。","愿你眼里有光，心中有梦。"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  // 定义一个函数来获取多条名言
+  async function getMultipleQuotes(count = 5) {
+    const quotes = [];
+    // 并发请求多条名言
+    const requests = Array.from({ length: count }, () => 
+      fetch('https://developer.hitokoto.cn/sentence/')
+        .then(response => response.json())
+        .then(data => {
+          const quote = data.content || data.hitokoto;
+          let fromText = '';
+          if (data.from) {
+            fromText = '出自 ' + data.from;
+          }
+          return { quote, fromText };
+        })
+        .catch(err => {
+          console.error('Failed to get a quote:', err);
+          return null;
+        })
+    );
+    
+    // 等待所有请求完成
+    const results = await Promise.all(requests);
+    // 过滤掉失败的请求
+    return results.filter(result => result !== null);
+  }
+  
+  // 获取多条名言并与自定义列表合并
+  getMultipleQuotes(5).then(fetchedQuotes => {
+    // 处理自定义名言列表
+    const customQuotes = ["与其仰望星空，不如去做摘星星的人。","努力是奇迹的另一个名字。","梦想不会逃跑，会逃跑的永远是自己。","青春是一本太仓促的书，我们含着泪，一读再读。","星光不问赶路人，时光不负有心人。","即使没有翅膀，也要学会飞翔。","心有多大，舞台就有多大。","每一个不曾起舞的日子，都是对生命的辜负。","未来可期，人间值得。","愿你眼里有光，心中有梦。"];
+    
+    // 合并名言
+    const allQuotes = [];
+    const quoteSet = new Set(); // 用于去重
+    
+    // 先添加获取的名言
+    fetchedQuotes.forEach(item => {
+      if (item && item.quote && !quoteSet.has(item.quote)) {
+        quoteSet.add(item.quote);
+        allQuotes.push(item.quote);
+        // 添加来源信息（如果有）
+        if (item.fromText) {
+          allQuotes.push(item.fromText);
+        }
+      }
+    });
+    
+    // 再添加自定义名言，确保不重复
+    customQuotes.forEach(quote => {
+      if (quote && !quoteSet.has(quote)) {
+        quoteSet.add(quote);
+        allQuotes.push(quote);
+      }
+    });
+    
+    // 打乱名言顺序，增加随机性
+    const shuffledQuotes = allQuotes.sort(() => Math.random() - 0.5);
+    
+    // 处理并显示名言
+    typedJSFn.processSubtitle(shuffledQuotes);
+  }).catch(err => {
+    console.error('Failed to process quotes:', err);
+    // 出错时使用自定义名言列表
+    typedJSFn.processSubtitle(["与其仰望星空，不如去做摘星星的人。","努力是奇迹的另一个名字。","梦想不会逃跑，会逃跑的永远是自己。","青春是一本太仓促的书，我们含着泪，一读再读。","星光不问赶路人，时光不负有心人。","即使没有翅膀，也要学会飞翔。","心有多大，舞台就有多大。","每一个不曾起舞的日子，都是对生命的辜负。","未来可期，人间值得。","愿你眼里有光，心中有梦。"]);
+  });
+}
+typedJSFn.run(subtitleType)
+</script></div><script async data-pjax src="/"></script><script src="/js/auto-banner.js"></script></div></body></html>
