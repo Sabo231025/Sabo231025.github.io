@@ -4,7 +4,11 @@
   const config = {
     interval: 5000,          // 切换间隔（毫秒）
     transitionTime: 1000,     // 过渡时间（毫秒）
-    apiUrl: 'https://www.dmoe.cc/random.php',  // 樱花API地址
+    // 使用多个图片API，随机选择
+    apiUrls: [
+      'https://www.dmoe.cc/random.php',  // 樱花API
+      'https://api.btstu.cn/sjbz/api.php?lx=dongman&format=images'  // 新增的动漫图片API
+    ],
     maxRetries: 3             // 最大重试次数
   };
   
@@ -24,16 +28,22 @@
   let isLoading = false;
   let currentImage = '';
   
-  // 获取樱花API图片
-  async function getSakuraImage() {
+  // 获取随机图片API的图片
+  async function getRandomImage() {
     let retries = 0;
     
     while (retries < config.maxRetries) {
       retries++;
       try {
+        // 从API列表中随机选择一个
+        const randomIndex = Math.floor(Math.random() * config.apiUrls.length);
+        const selectedApi = config.apiUrls[randomIndex];
+        
         // 注意：直接使用图片URL，不通过fetch请求JSON，避免CORS问题
-        // 樱花API直接访问URL会返回图片，不需要JSON解析
-        const imageUrl = `${config.apiUrl}?t=${Date.now()}`; // 添加时间戳避免缓存
+        // 直接访问URL会返回图片，不需要JSON解析
+        const imageUrl = `${selectedApi}?t=${Date.now()}`; // 添加时间戳避免缓存
+        
+        console.log(`使用API: ${selectedApi}`);
         
         // 预加载图片
         await preloadImage(imageUrl);
@@ -68,7 +78,7 @@
     isLoading = true;
     
     try {
-      const imageUrl = await getSakuraImage();
+      const imageUrl = await getRandomImage();
       currentImage = imageUrl;
       header.style.backgroundImage = `url(${imageUrl})`;
       console.log('图片切换成功:', imageUrl);
