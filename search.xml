@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo博客搭建指南</title>
+    <url>/Sabo231025/Sabo231025.github.io/2025/12/08/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h1 id="Hexo博客搭建指南"><a href="#Hexo博客搭建指南" class="headerlink" title="Hexo博客搭建指南"></a>Hexo博客搭建指南</h1><h2 id="什么是Hexo？"><a href="#什么是Hexo？" class="headerlink" title="什么是Hexo？"></a>什么是Hexo？</h2><p>Hexo是一个快速、简洁且高效的静态博客框架。Hexo使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h2 id="为什么选择Hexo？"><a href="#为什么选择Hexo？" class="headerlink" title="为什么选择Hexo？"></a>为什么选择Hexo？</h2><ul>
+<li>🚀 <strong>速度快</strong>：基于Node.js，生成静态文件的速度极快</li>
+<li>🎨 <strong>主题丰富</strong>：拥有大量精美的主题可供选择</li>
+<li>✍️ <strong>Markdown支持</strong>：使用熟悉的Markdown语法写作</li>
+<li>📦 <strong>插件生态</strong>：丰富的插件扩展功能</li>
+<li>🚢 <strong>部署简单</strong>：一键部署到GitHub Pages、Netlify等平台</li>
+</ul>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>在开始搭建Hexo博客之前，你需要准备以下环境：</p>
+<ol>
+<li><strong>Node.js</strong> (建议版本14.0以上)</li>
+<li><strong>Git</strong></li>
+</ol>
+<h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>访问<a href="https://nodejs.org/">Node.js官网</a>下载并安装适合你系统的Node.js版本。</p>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>访问<a href="https://git-scm.com/">Git官网</a>下载并安装Git。</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><h3 id="1-安装Hexo-CLI"><a href="#1-安装Hexo-CLI" class="headerlink" title="1. 安装Hexo CLI"></a>1. 安装Hexo CLI</h3><p>打开终端，执行以下命令安装Hexo CLI：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-初始化博客"><a href="#2-初始化博客" class="headerlink" title="2. 初始化博客"></a>2. 初始化博客</h3><p>选择一个目录作为你的博客根目录，执行以下命令初始化Hexo博客：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo init my-blog<br><span class="hljs-built_in">cd</span> my-blog<br>npm install<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-目录结构"><a href="#3-目录结构" class="headerlink" title="3. 目录结构"></a>3. 目录结构</h3><p>初始化完成后，你的博客目录结构如下：</p>
+<figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix">my-blog<span class="hljs-symbol">/</span><br>├── _config.yml        <span class="hljs-comment"># 站点配置文件</span><br>├── package.json       <span class="hljs-comment"># 依赖配置</span><br>├── scaffolds<span class="hljs-symbol">/</span>         <span class="hljs-comment"># 模板文件夹</span><br>├── source<span class="hljs-symbol">/</span>            <span class="hljs-comment"># 源文件目录</span><br>│   ├── _drafts<span class="hljs-symbol">/</span>       <span class="hljs-comment"># 草稿目录</span><br>│   └── _posts<span class="hljs-symbol">/</span>        <span class="hljs-comment"># 文章目录</span><br>└── themes<span class="hljs-symbol">/</span>            <span class="hljs-comment"># 主题目录</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h2><h3 id="1-站点配置"><a href="#1-站点配置" class="headerlink" title="1. 站点配置"></a>1. 站点配置</h3><p>编辑<code>_config.yml</code>文件，配置你的站点信息：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Site</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">你的博客名称</span><br><span class="hljs-attr">subtitle:</span> <span class="hljs-string">博客副标题</span><br><span class="hljs-attr">description:</span> <span class="hljs-string">博客描述</span><br><span class="hljs-attr">author:</span> <span class="hljs-string">你的名字</span><br><span class="hljs-attr">language:</span> <span class="hljs-string">zh-CN</span><br><span class="hljs-attr">timezone:</span> <span class="hljs-string">Asia/Shanghai</span><br><br><span class="hljs-comment"># URL</span><br><span class="hljs-attr">url:</span> <span class="hljs-string">https://yourusername.github.io</span><br><span class="hljs-attr">default_category:</span> <span class="hljs-string">uncategorized</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-主题选择与配置"><a href="#2-主题选择与配置" class="headerlink" title="2. 主题选择与配置"></a>2. 主题选择与配置</h3><p>Hexo支持多种主题，这里以Butterfly主题为例：</p>
+<h4 id="安装Butterfly主题"><a href="#安装Butterfly主题" class="headerlink" title="安装Butterfly主题"></a>安装Butterfly主题</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly<br></code></pre></td></tr></table></figure>
+
+<h4 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h4><p>在<code>_config.yml</code>中设置：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">theme:</span> <span class="hljs-string">butterfly</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h4><p>复制主题配置文件到博客根目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> themes/butterfly/_config.yml.example _config.butterfly.yml<br></code></pre></td></tr></table></figure>
+
+<p>然后编辑<code>_config.butterfly.yml</code>配置主题。</p>
+<h2 id="写作文章"><a href="#写作文章" class="headerlink" title="写作文章"></a>写作文章</h2><h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><p>执行以下命令创建一篇新文章：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo new <span class="hljs-string">&quot;文章标题&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="文章格式"><a href="#文章格式" class="headerlink" title="文章格式"></a>文章格式</h3><p>文章使用Markdown格式，位于<code>source/_posts/</code>目录下，示例：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">---<br>title: 文章标题<br>date: 2025-12-08 15:00:00<br>categories: 分类<br>tags:<br><span class="hljs-bullet">  -</span> 标签1<br><span class="hljs-section">  - 标签2</span><br><span class="hljs-section">---</span><br><br><span class="hljs-section"># 文章内容</span><br><br>这是一篇使用Hexo创建的文章。<br></code></pre></td></tr></table></figure>
+
+<h2 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h2><p>执行以下命令启动本地服务器：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo server<br></code></pre></td></tr></table></figure>
+
+<p>然后在浏览器中访问<code>http://localhost:4000</code>预览你的博客。</p>
+<h2 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h2><p>执行以下命令生成静态文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo generate<br></code></pre></td></tr></table></figure>
+
+<p>或使用简写：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo g<br></code></pre></td></tr></table></figure>
+
+<h2 id="部署到GitHub-Pages"><a href="#部署到GitHub-Pages" class="headerlink" title="部署到GitHub Pages"></a>部署到GitHub Pages</h2><h3 id="1-安装部署插件"><a href="#1-安装部署插件" class="headerlink" title="1. 安装部署插件"></a>1. 安装部署插件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-配置部署信息"><a href="#2-配置部署信息" class="headerlink" title="2. 配置部署信息"></a>2. 配置部署信息</h3><p>在<code>_config.yml</code>中添加部署配置：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/yourusername/yourusername.github.io.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-部署博客"><a href="#3-部署博客" class="headerlink" title="3. 部署博客"></a>3. 部署博客</h3><p>执行以下命令部署博客：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo deploy<br></code></pre></td></tr></table></figure>
+
+<p>或使用简写：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo d<br></code></pre></td></tr></table></figure>
+
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 新建文章</span><br>hexo new [title]<br><br><span class="hljs-comment"># 生成静态文件</span><br>hexo generate<br><br><span class="hljs-comment"># 启动本地服务器</span><br>hexo server<br><br><span class="hljs-comment"># 部署博客</span><br>hexo deploy<br><br><span class="hljs-comment"># 清理缓存文件和生成的静态文件</span><br>hexo clean<br><br><span class="hljs-comment"># 生成并部署</span><br>hexo g -d<br></code></pre></td></tr></table></figure>
+
+<h2 id="高级配置"><a href="#高级配置" class="headerlink" title="高级配置"></a>高级配置</h2><h3 id="1-添加评论系统"><a href="#1-添加评论系统" class="headerlink" title="1. 添加评论系统"></a>1. 添加评论系统</h3><p>Butterfly主题支持多种评论系统，如Valine、Waline、Gitalk等。以Waline为例：</p>
+<p>在<code>_config.butterfly.yml</code>中配置：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">comments:</span><br>  <span class="hljs-attr">use:</span> <span class="hljs-string">waline</span><br>  <span class="hljs-attr">waline:</span><br>    <span class="hljs-attr">serverURL:</span> <span class="hljs-string">https://your-waline-server.example.com</span><br>    <span class="hljs-attr">pageview:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-添加搜索功能"><a href="#2-添加搜索功能" class="headerlink" title="2. 添加搜索功能"></a>2. 添加搜索功能</h3><p>安装搜索插件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-generator-searchdb --save<br></code></pre></td></tr></table></figure>
+
+<p>在<code>_config.yml</code>中配置：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">search:</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">search.xml</span><br>  <span class="hljs-attr">field:</span> <span class="hljs-string">post</span><br>  <span class="hljs-attr">content:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">format:</span> <span class="hljs-string">html</span><br></code></pre></td></tr></table></figure>
+
+<p>在<code>_config.butterfly.yml</code>中启用搜索：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">search:</span><br>  <span class="hljs-attr">use:</span> <span class="hljs-string">local_search</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过以上步骤，你已经成功搭建了一个基于Hexo的静态博客，并部署到了GitHub Pages。现在你可以开始写作和分享你的文章了！</p>
+<p>Hexo的生态非常丰富，你可以根据自己的需求安装各种插件和主题，打造属于自己的个性化博客。</p>
+<p>祝你使用Hexo愉快！ 🎉</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>博客</tag>
+        <tag>搭建指南</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/Sabo231025/Sabo231025.github.io/2025/12/06/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
