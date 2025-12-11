@@ -636,8 +636,12 @@ typedJSFn.run(subtitleType)
   transform: translateX(-50%) scale(1.2);
 }
 
-.anime-music-player .volume-control:hover, .anime-music-player .volume-btn:hover + .volume-control {
-  display: block;
+.anime-music-player .volume-control {
+  display: none;
+  position: absolute;
+  top: -130px;
+  right: 20px;
+  z-index: 10000;
 }
 
 /* Responsive Design */
@@ -753,6 +757,19 @@ class AnimeMusicPlayer {
     this.volumeThumb.addEventListener('mousedown', (e) => this.startVolumeDrag(e));
     document.addEventListener('mousemove', (e) => this.handleVolumeDrag(e));
     document.addEventListener('mouseup', () => this.stopVolumeDrag());
+    
+    // Toggle volume control visibility on volume button click
+    this.volumeBtn.addEventListener('click', () => this.toggleVolumeControl());
+    
+    // Keep volume control visible when hovering over it
+    this.volumeControl.addEventListener('mouseenter', () => {
+      this.volumeControl.style.display = 'block';
+    });
+    this.volumeControl.addEventListener('mouseleave', () => {
+      if (!this.isVolumeDragging) {
+        this.volumeControl.style.display = 'none';
+      }
+    });
     
     // Drag functionality
     this.player.addEventListener('mousedown', (e) => this.startDrag(e));
@@ -878,6 +895,19 @@ class AnimeMusicPlayer {
   
   stopVolumeDrag() {
     this.isVolumeDragging = false;
+    // Hide volume control after dragging stops if mouse is not hovering
+    if (!this.volumeControl.matches(':hover')) {
+      this.volumeControl.style.display = 'none';
+    }
+  }
+  
+  // Toggle volume control visibility
+  toggleVolumeControl() {
+    if (this.volumeControl.style.display === 'block') {
+      this.volumeControl.style.display = 'none';
+    } else {
+      this.volumeControl.style.display = 'block';
+    }
   }
   
   // Drag functionality
