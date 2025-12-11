@@ -312,18 +312,18 @@ btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
 typedJSFn.run(subtitleType)
 </script></div><script src="https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0/dist/autoload.js"></script><script async data-pjax src="/"></script><script src="/js/auto-banner.js"></script>
 
-<!-- APlayer Fixed Player -->
-<div id="aplayer-fixed" class="aplayer aplayer-fixed aplayer-withlist" style="position: fixed; right: 20px; bottom: 20px; z-index: 9999;"></div>
+<!-- APlayer Fixed Player with Anime Style -->
+<div id="aplayer-anime" class="aplayer aplayer-fixed aplayer-withlist" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 9999;"></div>
 
 <script>
-// Initialize APlayer with proper configuration
+// Initialize APlayer with anime style configuration
 const ap = new APlayer({
-  container: document.getElementById('aplayer-fixed'),
+  container: document.getElementById('aplayer-anime'),
   fixed: true,
   autoplay: false,
   mutex: true,
   preload: 'auto',
-  theme: '#FFB3CC',
+  theme: '#FF69B4',
   loop: 'one',
   order: 'list',
   volume: 0.7,
@@ -337,106 +337,242 @@ const ap = new APlayer({
       url: 'https://music.163.com/song/media/outer/url?id=1900000000.mp3',
       cover: 'https://picsum.photos/id/1005/300/300',
       lrc: '',
-      theme: '#FFB3CC'
+      theme: '#FF69B4'
     }
   ]
 });
 
-// Add custom CSS for circular style with better design
+// Add custom CSS for anime style
 const style = document.createElement('style');
 style.textContent = `
-/* Enhanced circular player style */
-.aplayer-fixed {
-  width: 100px;
-  height: 100px;
-  border-radius: 50% !important;
-  overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+/* Anime style player container */
+#aplayer-anime {
+  position: fixed !important;
+  right: 20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 120px !important;
+  height: 120px !important;
+  z-index: 9999 !important;
+  overflow: visible !important;
   cursor: move;
 }
 
-.aplayer-fixed:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
-}
-
-.aplayer-fixed .aplayer-pic {
+/* Anime style circular player */
+#aplayer-anime .aplayer {
+  width: 120px !important;
+  height: 120px !important;
   border-radius: 50% !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
-  transition: transform 0.3s ease !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  position: relative;
+  overflow: visible !important;
 }
 
-.aplayer-fixed:hover .aplayer-pic {
-  transform: scale(1.05) !important;
+/* Anime background with glowing effect */
+#aplayer-anime::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(circle, rgba(255,105,180,0.3) 0%, rgba(255,105,180,0) 70%);
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+  z-index: -1;
 }
 
-.aplayer-fixed .aplayer-info {
-  display: none !important;
+/* Anime style background image */
+#aplayer-anime .aplayer-pic {
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50% !important;
+  background-image: url('https://picsum.photos/id/1005/300/300'), linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%) !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+  background-blend-mode: overlay !important;
+  box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3), 0 0 0 3px rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  animation: rotate 20s linear infinite;
+  animation-play-state: paused;
 }
 
-.aplayer-fixed .aplayer-play {
-  width: 100px !important;
-  height: 100px !important;
-  line-height: 100px !important;
-  background: rgba(0, 0, 0, 0.3) !important;
+/* Play animation when playing */
+#aplayer-anime .aplayer-playing .aplayer-pic {
+  animation-play-state: running;
+}
+
+/* Glowing border effect */
+#aplayer-anime .aplayer-pic::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff69b4, #ff1493, #c71585, #ff69b4);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease infinite;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* Anime style play button */
+#aplayer-anime .aplayer-play {
+  width: 120px !important;
+  height: 120px !important;
+  line-height: 120px !important;
+  background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 70%) !important;
+  transition: all 0.3s ease !important;
+  opacity: 0;
+}
+
+#aplayer-anime:hover .aplayer-play {
+  opacity: 1;
+  background: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 70%) !important;
+}
+
+/* Anime style play icon */
+#aplayer-anime .aplayer-icon {
+  font-size: 40px !important;
+  color: #ffffff !important;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
   transition: all 0.3s ease !important;
 }
 
-.aplayer-fixed .aplayer-play:hover {
-  background: rgba(0, 0, 0, 0.5) !important;
+#aplayer-anime:hover .aplayer-icon {
+  transform: scale(1.1);
 }
 
-.aplayer-fixed .aplayer-icon {
-  font-size: 32px !important;
-  color: #ffffff !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-}
-
-.aplayer-fixed .aplayer-miniswitcher {
+/* Hide unnecessary elements */
+#aplayer-anime .aplayer-info,
+#aplayer-anime .aplayer-miniswitcher {
   display: none !important;
 }
 
-/* Make player controls accessible */
-.aplayer-fixed .aplayer-body {
-  height: 100% !important;
-  width: 100% !important;
+/* Ensure player body covers the entire container */
+#aplayer-anime .aplayer-body {
+  height: 120px !important;
+  width: 120px !important;
+  overflow: visible !important;
 }
 
-/* Ensure player doesn't block rightside buttons */
-#rightside {
-  bottom: 140px !important;
+/* Anime style list when expanded */
+#aplayer-anime .aplayer-list {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 15px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid rgba(255, 105, 180, 0.3) !important;
 }
 
-/* Responsive design */
+/* Responsive design for anime player */
 @media (max-width: 768px) {
-  .aplayer-fixed {
+  #aplayer-anime {
+    width: 100px !important;
+    height: 100px !important;
+    right: 15px !important;
+  }
+  
+  #aplayer-anime .aplayer,
+  #aplayer-anime .aplayer-pic,
+  #aplayer-anime .aplayer-play,
+  #aplayer-anime .aplayer-body {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  #aplayer-anime .aplayer-play {
+    line-height: 100px !important;
+  }
+  
+  #aplayer-anime .aplayer-icon {
+    font-size: 32px !important;
+  }
+  
+  #aplayer-anime::before {
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #aplayer-anime {
+    width: 80px !important;
+    height: 80px !important;
+    right: 10px !important;
+  }
+  
+  #aplayer-anime .aplayer,
+  #aplayer-anime .aplayer-pic,
+  #aplayer-anime .aplayer-play,
+  #aplayer-anime .aplayer-body {
     width: 80px !important;
     height: 80px !important;
   }
   
-  .aplayer-fixed .aplayer-play {
-    width: 80px !important;
-    height: 80px !important;
+  #aplayer-anime .aplayer-play {
     line-height: 80px !important;
   }
   
-  .aplayer-fixed .aplayer-icon {
+  #aplayer-anime .aplayer-icon {
     font-size: 24px !important;
   }
   
-  #rightside {
-    bottom: 120px !important;
+  #aplayer-anime::before {
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
   }
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Reset position for rightside buttons */
+#rightside {
+  bottom: 20px !important;
 }
 `;
 document.head.appendChild(style);
 
-// Add drag functionality with better user experience
-const player = document.getElementById('aplayer-fixed');
+// Add drag functionality with anime style
+const player = document.getElementById('aplayer-anime');
 let isDragging = false;
 let offsetX, offsetY;
 
@@ -472,7 +608,7 @@ document.addEventListener('mousemove', (e) => {
   player.style.left = `${newX}px`;
   player.style.top = `${newY}px`;
   player.style.right = 'auto';
-  player.style.bottom = 'auto';
+  player.style.transform = 'none'; // Remove translateY when dragging
 });
 
 document.addEventListener('mouseup', () => {
@@ -480,6 +616,7 @@ document.addEventListener('mouseup', () => {
     isDragging = false;
     player.style.cursor = 'move';
     player.style.zIndex = '9999'; // Return to original z-index
+    // Don't reset position to center after drag
   }
 });
 
@@ -492,7 +629,7 @@ ap.on('error', (error) => {
 
 // Add loaded event to ensure player is working
 ap.on('loadeddata', () => {
-  console.log('APlayer loaded successfully');
+  console.log('APlayer loaded successfully with anime style');
 });
 </script>
 </div></body></html>
