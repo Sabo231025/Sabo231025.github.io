@@ -314,7 +314,12 @@ typedJSFn.run(subtitleType)
     <div class="cover-overlay"></div>
   </div>
   <div class="player-info">
-    <div class="player-title">約束</div>
+    <div class="player-header">
+      <div class="player-title">約束</div>
+      <button class="control-btn close-btn" title="关闭播放器">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
     <div class="player-artist">Akie秋绘</div>
     <div class="player-progress">
       <div class="progress-loaded"></div>
@@ -376,6 +381,17 @@ typedJSFn.run(subtitleType)
   }
 }
 
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50%) translateX(100px);
+  }
+}
+
 /* Player Cover */
 .anime-music-player .player-cover {
   width: 100%;
@@ -416,15 +432,39 @@ typedJSFn.run(subtitleType)
   position: relative;
 }
 
+.anime-music-player .player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 6px 0;
+}
+
 .anime-music-player .player-title {
   font-size: 18px;
   font-weight: bold;
   color: #333;
-  margin: 0 0 6px 0;
+  margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: 'Microsoft YaHei', sans-serif;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.anime-music-player .close-btn {
+  background: rgba(255, 105, 180, 0.1);
+  color: #666;
+  font-size: 14px;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+}
+
+.anime-music-player .close-btn:hover {
+  background: rgba(255, 105, 180, 0.3);
+  color: #ff69b4;
+  transform: scale(1.2);
 }
 
 .anime-music-player .player-artist {
@@ -674,6 +714,7 @@ class AnimeMusicPlayer {
     this.playBtn = document.querySelector('.play-btn');
     this.volumeBtn = document.querySelector('.volume-btn');
     this.loopBtn = document.querySelector('.loop-btn');
+    this.closeBtn = document.querySelector('.close-btn');
     this.progress = document.querySelector('.player-progress');
     this.progressPlayed = document.querySelector('.progress-played');
     this.progressLoaded = document.querySelector('.progress-loaded');
@@ -700,6 +741,7 @@ class AnimeMusicPlayer {
     // Event listeners
     this.playBtn.addEventListener('click', () => this.togglePlay());
     this.loopBtn.addEventListener('click', () => this.toggleLoop());
+    this.closeBtn.addEventListener('click', () => this.closePlayer());
     this.progress.addEventListener('click', (e) => this.seek(e));
     this.audio.addEventListener('timeupdate', () => this.updateProgress());
     this.audio.addEventListener('loadedmetadata', () => this.updateTotalTime());
@@ -881,6 +923,21 @@ class AnimeMusicPlayer {
       this.player.style.cursor = 'move';
       this.player.style.zIndex = '9999'; // Return to original z-index
     }
+  }
+  
+  // Close player functionality
+  closePlayer() {
+    // Pause the audio first
+    this.audio.pause();
+    this.isPlaying = false;
+    
+    // Add close animation
+    this.player.style.animation = 'fadeOutRight 0.3s ease-out forwards';
+    
+    // Remove player after animation completes
+    setTimeout(() => {
+      this.player.style.display = 'none';
+    }, 300);
   }
   
   // Anime-style animations
