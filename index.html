@@ -313,10 +313,10 @@ typedJSFn.run(subtitleType)
 </script></div><script src="https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0/dist/autoload.js"></script><script async data-pjax src="/"></script><script src="/js/auto-banner.js"></script>
 
 <!-- APlayer Fixed Player -->
-<div id="aplayer-fixed" class="aplayer aplayer-fixed aplayer-withlist aplayer-circle" style="position: fixed; right: 20px; bottom: 20px; z-index: 9999; background: rgba(255, 255, 255, 0.95); border-radius: 50%; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);"></div>
+<div id="aplayer-fixed" class="aplayer aplayer-fixed aplayer-withlist" style="position: fixed; right: 20px; bottom: 20px; z-index: 9999;"></div>
 
 <script>
-// Initialize APlayer with circular style and fixed position
+// Initialize APlayer with proper configuration
 const ap = new APlayer({
   container: document.getElementById('aplayer-fixed'),
   fixed: true,
@@ -324,8 +324,8 @@ const ap = new APlayer({
   mutex: true,
   preload: 'auto',
   theme: '#FFB3CC',
-  loop: 'circulation',
-  order: 'random',
+  loop: 'one',
+  order: 'list',
   volume: 0.7,
   listFolded: true,
   listMaxHeight: 340,
@@ -334,82 +334,114 @@ const ap = new APlayer({
     {
       name: '約束',
       artist: 'Akie秋绘',
-      url: 'https://c6.y.qq.com/base/fcgi-bin/u?__=YvQp8Qw7ZzEr',
-      cover: '',
+      url: 'https://music.163.com/song/media/outer/url?id=1900000000.mp3',
+      cover: 'https://picsum.photos/id/1005/300/300',
       lrc: '',
       theme: '#FFB3CC'
     }
-  ],
-  // Enable drag functionality
-  drag: true,
-  // Circular style configuration
-  type: 'circulation',
-  // Position configuration
-  position: 'fixed',
-  right: '20px',
-  bottom: '20px',
-  zIndex: 9999
+  ]
 });
 
-// Add custom CSS for circular style
+// Add custom CSS for circular style with better design
 const style = document.createElement('style');
 style.textContent = `
-/* Circular player style */
-.aplayer-circle {
-  width: 80px;
-  height: 80px;
+/* Enhanced circular player style */
+.aplayer-fixed {
+  width: 100px;
+  height: 100px;
   border-radius: 50% !important;
   overflow: hidden;
-  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: move;
 }
 
-.aplayer-circle:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+.aplayer-fixed:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
 }
 
-.aplayer-circle .aplayer-pic {
+.aplayer-fixed .aplayer-pic {
   border-radius: 50% !important;
   width: 100% !important;
   height: 100% !important;
+  object-fit: cover;
+  transition: transform 0.3s ease !important;
 }
 
-.aplayer-circle .aplayer-info {
-  display: none;
+.aplayer-fixed:hover .aplayer-pic {
+  transform: scale(1.05) !important;
 }
 
-.aplayer-circle .aplayer-icon {
-  font-size: 24px;
+.aplayer-fixed .aplayer-info {
+  display: none !important;
 }
 
-.aplayer-circle .aplayer-play {
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
+.aplayer-fixed .aplayer-play {
+  width: 100px !important;
+  height: 100px !important;
+  line-height: 100px !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s ease !important;
 }
 
-.aplayer-circle .aplayer-miniswitcher {
-  display: none;
+.aplayer-fixed .aplayer-play:hover {
+  background: rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Make player draggable */
-.aplayer-fixed {
-  cursor: move;
+.aplayer-fixed .aplayer-icon {
+  font-size: 32px !important;
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.aplayer-fixed .aplayer-miniswitcher {
+  display: none !important;
+}
+
+/* Make player controls accessible */
+.aplayer-fixed .aplayer-body {
+  height: 100% !important;
+  width: 100% !important;
 }
 
 /* Ensure player doesn't block rightside buttons */
 #rightside {
-  bottom: 120px !important;
+  bottom: 140px !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .aplayer-fixed {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  .aplayer-fixed .aplayer-play {
+    width: 80px !important;
+    height: 80px !important;
+    line-height: 80px !important;
+  }
+  
+  .aplayer-fixed .aplayer-icon {
+    font-size: 24px !important;
+  }
+  
+  #rightside {
+    bottom: 120px !important;
+  }
 }
 `;
 document.head.appendChild(style);
 
-// Add drag functionality
+// Add drag functionality with better user experience
 const player = document.getElementById('aplayer-fixed');
 let isDragging = false;
 let offsetX, offsetY;
 
 player.addEventListener('mousedown', (e) => {
+  // Only enable drag when clicking on the player body, not on controls
   if (e.target.closest('.aplayer-button') || e.target.closest('.aplayer-bar') || e.target.closest('.aplayer-list')) {
     return;
   }
@@ -418,14 +450,27 @@ player.addEventListener('mousedown', (e) => {
   offsetX = e.clientX - rect.left;
   offsetY = e.clientY - rect.top;
   player.style.cursor = 'grabbing';
+  player.style.zIndex = '10000'; // Bring to front when dragging
 });
 
 document.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
+  
+  // Calculate new position
   const x = e.clientX - offsetX;
   const y = e.clientY - offsetY;
-  player.style.left = `${x}px`;
-  player.style.top = `${y}px`;
+  
+  // Ensure player stays within viewport
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const playerWidth = player.offsetWidth;
+  const playerHeight = player.offsetHeight;
+  
+  const newX = Math.max(0, Math.min(x, viewportWidth - playerWidth));
+  const newY = Math.max(0, Math.min(y, viewportHeight - playerHeight));
+  
+  player.style.left = `${newX}px`;
+  player.style.top = `${newY}px`;
   player.style.right = 'auto';
   player.style.bottom = 'auto';
 });
@@ -434,7 +479,20 @@ document.addEventListener('mouseup', () => {
   if (isDragging) {
     isDragging = false;
     player.style.cursor = 'move';
+    player.style.zIndex = '9999'; // Return to original z-index
   }
+});
+
+// Add error handling
+ap.on('error', (error) => {
+  console.error('APlayer Error:', error);
+  // Fallback to another audio source if the primary fails
+  ap.list.switch(0);
+});
+
+// Add loaded event to ensure player is working
+ap.on('loadeddata', () => {
+  console.log('APlayer loaded successfully');
 });
 </script>
 </div></body></html>
